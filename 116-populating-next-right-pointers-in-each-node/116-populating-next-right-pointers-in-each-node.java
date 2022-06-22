@@ -23,48 +23,12 @@ class Node {
 
 class Solution {
     public Node connect(Node root) {
-        if(root == null)
-            return null;
-        if(root.left == null)
-        {
-            root.next= null;
-            return root;
-        }
-        
-        root.next = null;
-        helper(root.left, root.right);
-        
+                if(root == null) return null;
+        if(root.left != null) root.left.next = root.right;
+        if(root.right != null && root.next != null) root.right.next = root.next.left;
+        connect(root.left);
+        connect(root.right);
         return root;
+
     }
-    
-    public void helper(Node root, Node next){
-        
-        if(root != null&&  root.left == null && root.right == null && next == null){  
-            root.next = null;
-            return;
-        }
-        // System.out.println(root.val);
-        if(next == null && root.left != null)
-        {
-            root.next = null;
-            helper(root.left, root.right);
-        }
-        
-        else{
-        root.next = next;
-        
-        if(root.left != null && root.right != null){
-            
-            helper(root.left, root.right);
-            helper(root.right, next.left);
-            helper(next.left, next.right);
-        
-        }
-        }
-        
-        return;
-        
-    }
-    
-    
 }
