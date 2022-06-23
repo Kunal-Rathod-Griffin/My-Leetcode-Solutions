@@ -19,6 +19,9 @@ class Solution {
         ListNode slow = head;
         ListNode fast = head;
         
+        //fast.next is will be null when the list has odd nodes
+        //fast.next.next will be null when the list has even nodes
+        
         while(fast.next != null && fast.next.next != null){
             slow = slow.next;
             fast = fast.next.next;
