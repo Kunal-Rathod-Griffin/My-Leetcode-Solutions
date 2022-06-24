@@ -19,19 +19,16 @@ class Solution {
         ListNode fast_head = fast;
         while(fast.next != null && fast.next.next != null){
             
-        
-            
             slow.next = fast.next;
             fast.next = slow.next.next;
             slow = slow.next;
             fast = fast.next;
             
-            
         }
             
-        if(fast.next == null)
+        if(fast.next == null) //this case will be when nodes are even
             slow.next = fast_head;
-        else if(fast.next.next == null)
+        else if(fast.next.next == null) //this case will be when nodes are odd
         {    
             slow.next = fast.next;
             slow= slow.next;
