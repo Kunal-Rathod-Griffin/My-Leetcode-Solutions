@@ -1,40 +1,13 @@
 class Solution {
-    public boolean checkPossibility(int[] nums) {
-        
-        int min = Integer.MIN_VALUE;
-        int count_min = 0;
-        
-        for(int i=0; i<nums.length ; i++){
-            
-            if(nums[i] >= min){
-                min = nums[i];
-                // System.out.println(min + " min value");
-            }
-            else{
-                System.out.println(count_min + " count_min");
-                count_min++;
-            }
-            
-        }
-        
-        int min2 = Integer.MAX_VALUE;
-        int count_max= 0;
-        
-        for(int i = nums.length -1; i>=0; i--){
-            
-            if(nums[i] <= min2){
-                min2 = nums[i];
-            }
-            else{
-                
-                count_max++;
+    public boolean checkPossibility(int[] a) {
+        int modified = 0;
+        for (int i = 1; i < a.length; i++) {
+            if (a[i] < a[i - 1]) {
+                if (modified++ > 0) return false;
+                if (i - 2 < 0 || a[i - 2] <= a[i]) a[i - 1] = a[i]; // lower a[i - 1]
+                else a[i] = a[i - 1]; // rise a[i]
             }
         }
-        
-        
-        System.out.println(count_min + " " + count_max);
-        if(Math.min(count_min, count_max) >1)
-            return false;
         return true;
     }
 }
