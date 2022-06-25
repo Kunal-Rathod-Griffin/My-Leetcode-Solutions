@@ -1,13 +1,14 @@
 class Solution {
-    public boolean checkPossibility(int[] a) {
-        int modified = 0;
-        for (int i = 1; i < a.length; i++) {
-            if (a[i] < a[i - 1]) {
-                if (modified++ > 0) return false;
-                if (i - 2 < 0 || a[i - 2] <= a[i]) a[i - 1] = a[i]; // lower a[i - 1]
-                else a[i] = a[i - 1]; // rise a[i]
+ public boolean checkPossibility(int[] nums) {
+        int cnt = 0;                                                                    //the number of changes
+        for(int i = 1; i < nums.length && cnt<=1 ; i++){
+            if(nums[i-1] > nums[i]){
+                cnt++;
+                if(i-2<0 || nums[i-2] <= nums[i])nums[i-1] = nums[i];                    //modify nums[i-1] of a priority
+                else nums[i] = nums[i-1];                                                //have to modify nums[i]
             }
         }
-        return true;
+        return cnt<=1; 
     }
+
 }
