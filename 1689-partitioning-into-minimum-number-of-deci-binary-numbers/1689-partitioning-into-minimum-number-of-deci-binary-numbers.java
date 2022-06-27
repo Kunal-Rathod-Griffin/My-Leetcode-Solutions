@@ -9,7 +9,7 @@ class Solution {
             if(s > max) max = s;
         }
         
-        return Character.getNumericValue(max);
+        return max - '0';
         
     }
 }
