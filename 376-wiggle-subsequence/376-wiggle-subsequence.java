@@ -3,9 +3,13 @@ class Solution {
         
 //         int n = nums.length - 1;
         
+//         if(n == 0){
+//             return n+1;
+//         }
+        
 //         int[] diff = new int[n-1];
         
-//         for(int i =0; i<n-1; i++){
+//         for(int i =0; i<diff.length; i++){
 //             diff[i] = nums[i+1] - nums[i];
 //         }
         
@@ -18,7 +22,7 @@ class Solution {
 //             if(diff[i] == 0)
 //             {
 //                 ans--;
-                 
+                
 //             }
 //             else if(is_positive == null){
 //                 is_positive = diff[i] > 0;
@@ -30,10 +34,15 @@ class Solution {
                  
 //             }
 //             else{
+//                 System.out.println(diff[i] + " here");
 //                 is_positive = !is_positive;
 //             }
             
             
+//         }
+        
+//         for(int i =0;i<diff.length; i++){
+//             System.out.println(diff[i]);
 //         }
         
 //         return ans;
@@ -47,11 +56,18 @@ class Solution {
         if (temp == 0) count--;
         else if (positive == null) positive = temp > 0;
         else if ((temp > 0 && positive) || (temp < 0 && !positive))
+        {    
+            System.out.println(i);
             count--;
-        else
+        }
+        else{
             positive = !positive;
+            
+        }
     }
     return count;
 
+        
+        
     }
 }
