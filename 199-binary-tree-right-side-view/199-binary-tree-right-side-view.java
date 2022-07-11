@@ -14,33 +14,29 @@
  * }
  */
 class Solution {
-    
-    public int curr_max;
-    public int max_till_now;
-    public List<Integer> ans;
     public List<Integer> rightSideView(TreeNode root) {
-        ans = new ArrayList<Integer>();
+        
+        Queue<TreeNode> q = new LinkedList<>();
+        List<Integer> ans  = new ArrayList<>();
+        
         if(root == null) return ans;
+        q.add(root);
         
-        
-        curr_max = 0;
-        max_till_now  = 0;
-        traverse(root, ans, 1);
-        return ans;
-    }
-    
-    public void traverse(TreeNode root, List<Integer> ans, int max_till_now){
-        
-        if(root == null) return;
-        
-        if(max_till_now > curr_max) {
-            ans.add(root.val);
-            curr_max = max_till_now;
+        while(!q.isEmpty()){
+            
+            int s = q.size();
+            
+            for(int i =0; i<s; i++){
+                
+                TreeNode curr = q.remove();
+                if(i == 0) ans.add(curr.val);
+                if(curr.right != null) q.add(curr.right);
+                if(curr.left != null) q.add(curr.left);
+            }
+            
         }
         
-        if(root.right != null) traverse(root.right, ans, max_till_now+1);
-        if(root.left != null) traverse(root.left, ans, max_till_now + 1);
+        return ans;
+        
     }
-    
-    
 }
