@@ -1,3 +1,10 @@
+/*
+We are here calculating based on previous subsequences. 
+refer to this: https://leetcode.com/problems/letter-tile-possibilities/discuss/308284/Concise-java-solution
+*/
+
+
+
 class Solution {
     public int numTilePossibilities(String tiles) {
         
